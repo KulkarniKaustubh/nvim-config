@@ -6,6 +6,7 @@ vim.opt.scrolloff = 10
 vim.opt.tabstop = 4                    -- insert 4 spaces for a tab
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- Setting the invisible characters to show
 vim.opt.listchars = {
