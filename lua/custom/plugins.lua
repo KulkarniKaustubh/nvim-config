@@ -25,7 +25,8 @@ local plugins = {
                 "mypy",
                 "ruff",
                 "pyright",
-                "gopls"
+                "gopls",
+                "clangd"
             }
         }
     },
@@ -38,7 +39,7 @@ local plugins = {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        ft = {"python", "go"},
+        ft = {"python", "go", "cpp"},
         opts = function()
             return require "custom.configs.null-ls"
         end,

@@ -16,6 +16,9 @@ local opts = {
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.golines,
+        null_ls.builtins.formatting.clang_format.with({
+            extra_args = { "--style={IndentWidth: 4}" }
+        }),
     },
 
     on_attach = function(client, bufnr)
