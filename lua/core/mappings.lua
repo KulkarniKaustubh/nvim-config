@@ -203,21 +203,21 @@ M.lspconfig = {
 
     ["<leader>lf"] = {
       function()
-        vim.diagnostic.open_float { border = "rounded" }
+        vim.diagnostic.open_float { border = "single" }
       end,
       "Floating diagnostic",
     },
 
     ["<leader>lk"] = {
       function()
-        vim.diagnostic.goto_prev { float = { border = "rounded" } }
+        vim.diagnostic.goto_prev { float = { border = "single" } }
       end,
       "Goto prev",
     },
 
     ["<leader>lj"] = {
       function()
-        vim.diagnostic.goto_next { float = { border = "rounded" } }
+        vim.diagnostic.goto_next { float = { border = "single" } }
       end,
       "Goto next",
     },
