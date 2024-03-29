@@ -5,12 +5,39 @@ local capabilities = config.capabilities
 capabilities.offsetEncoding = { "utf-16" }
 
 local lspconfig = require("lspconfig")
--- local util = require "lspconfig/util"
+
+vim.diagnostic.config ({
+    float = {
+        border = "single",
+    }
+})
+
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, {
+            border = "single",
+            title = "LSP Hover",
+            focusable = true,
+            wrap = true,
+            max_width = 50,
+            offset_x = vim.api.nvim_get_option('columns'),
+            offset_y = -vim.api.nvim_get_option('lines'),
+        }
+    ),
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics,
+        {
+            underline = true,
+            virtual_text = false,
+        }
+    )
+}
 
 lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {"python"},
+    handlers = handlers,
 }
 
 lspconfig.gopls.setup {
@@ -30,6 +57,7 @@ lspconfig.gopls.setup {
             }
         },
     },
+    handlers = handlers,
 }
 
 lspconfig.clangd.setup {
@@ -37,5 +65,6 @@ lspconfig.clangd.setup {
         client.server_capabilities.signatureHelpProvider = false
         on_attach(client, bufnr)
     end,
+    handlers = handlers,
     capabilities = capabilities,
 }
