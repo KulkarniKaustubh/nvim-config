@@ -22,7 +22,7 @@ M.general = {
 
         -- Telescope
         ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Telescope LSP references" },
-        ["<leader>lL"] = { "<cmd> Telescope diagnostics bufnr=0 <CR>", "Telescope diagnostics for current buffer" },
+        ["<leader>ll"] = { "<cmd> Telescope diagnostics bufnr=0 <CR>", "Telescope diagnostics for current buffer" },
         ["<leader>lA"] = { "<cmd> Telescope diagnostics <CR>", "Telescope diagnostics for the project" },
 
         -- LSP bindings
@@ -32,7 +32,7 @@ M.general = {
             end,
             "LSP hover",
         },
-        ["<leader>ll"] = {
+        ["<leader>lL"] = {
             function()
                 vim.diagnostic.open_float()
             end,
