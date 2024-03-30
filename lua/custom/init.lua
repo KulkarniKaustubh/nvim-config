@@ -8,6 +8,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- Wrap and linebreak options
+vim.opt.linebreak = true
+vim.opt.breakat = " ^I^M!@*-+;:,./?"
+vim.opt.showbreak = "ͱ"
+
 -- Setting the invisible characters to show
 vim.opt.listchars = {
   tab = "→\\",

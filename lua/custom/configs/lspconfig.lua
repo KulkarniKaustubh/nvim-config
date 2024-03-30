@@ -19,7 +19,8 @@ local handlers = {
             title = "LSP Hover",
             focusable = true,
             wrap = true,
-            max_width = 50,
+            max_width = 70,
+            max_height = 25,
             offset_x = vim.api.nvim_get_option('columns'),
             offset_y = -vim.api.nvim_get_option('lines'),
         }
@@ -29,6 +30,18 @@ local handlers = {
         {
             underline = true,
             virtual_text = false,
+        }
+    ),
+    ["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, {
+            border = "single",
+            title = "LSP Signature Help",
+            focusable = true,
+            wrap = true,
+            max_width = 70,
+            max_height = 25,
+            offset_x = vim.api.nvim_get_option('columns'),
+            offset_y = -vim.api.nvim_get_option('lines'),
         }
     )
 }
