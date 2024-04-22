@@ -20,6 +20,9 @@ M.general = {
         -- Show invisible characters
         ["<C-c>w"] = { "<cmd> set invlist <CR>", "Toggle the invisible listchars" },
 
+        -- Show invisible characters
+        ["c_"] = { "ct_", "Change till underscore" },
+
         -- Telescope
         ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Telescope LSP references" },
         ["<leader>ll"] = { "<cmd> Telescope diagnostics bufnr=0 <CR>", "Telescope diagnostics for current buffer" },
