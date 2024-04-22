@@ -13,6 +13,9 @@ vim.opt.linebreak = true
 vim.opt.breakat = " ^I^M!@*-+;:,./?"
 vim.opt.showbreak = "ͱ"
 
+-- For Auto Session
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- Setting the invisible characters to show
 vim.opt.listchars = {
   tab = "→\\",

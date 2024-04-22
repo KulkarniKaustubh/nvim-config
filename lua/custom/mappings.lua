@@ -32,18 +32,28 @@ M.general = {
             end,
             "LSP hover",
         },
+
         ["<leader>lL"] = {
             function()
                 vim.diagnostic.open_float()
             end,
             "Floating diagnostic",
         },
+
+        ["<leader>ld"] = {
+            function()
+                vim.diagnostic.setloclist()
+            end,
+            "Floating diagnostic",
+        },
+
         ["<leader>la"] = {
             function()
                 vim.lsp.buf.code_action()
             end,
             "LSP code action",
         },
+
         ["<leader>lr"] = {
             function()
                 require("nvchad.renamer").open()

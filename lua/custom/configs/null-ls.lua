@@ -15,7 +15,9 @@ local opts = {
         }),
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.goimports_reviser,
-        null_ls.builtins.formatting.golines,
+        null_ls.builtins.formatting.golines.with({
+            extra_args = { "--max-len=79" }
+        }),
         null_ls.builtins.formatting.clang_format.with({
             extra_args = { "--style={IndentWidth: 4}" }
         }),
