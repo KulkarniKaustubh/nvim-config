@@ -58,6 +58,14 @@ local plugins = {
         end,
         event = {"CmdlineEnter"},
         ft = {"go", 'gomod'},
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,      -- Recommended
+        -- ft = "markdown" -- If you decide to lazy-load anyway
+        config = function()
+            require("markview").setup()
+        end,
     }
 }
 
