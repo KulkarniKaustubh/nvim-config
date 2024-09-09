@@ -66,6 +66,10 @@ local plugins = {
         config = function()
             require("markview").setup()
         end,
+    },
+    {
+        "unblevable/quick-scope",
+        lazy = false,
     }
 }
 

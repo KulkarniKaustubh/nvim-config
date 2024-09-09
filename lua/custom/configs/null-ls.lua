@@ -19,6 +19,7 @@ local opts = {
             extra_args = { "--max-len=79" }
         }),
         null_ls.builtins.formatting.clang_format.with({
+            filetypes = { "c", "cpp" },
             extra_args = { "--style={IndentWidth: 4}" }
         }),
     },
