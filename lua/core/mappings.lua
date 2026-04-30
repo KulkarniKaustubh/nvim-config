@@ -336,14 +336,14 @@ M.nvterm = {
       "Toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<C-h>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
     },
 
-    ["<A-v>"] = {
+    ["<C-t>"] = {
       function()
         require("nvterm.terminal").toggle "vertical"
       end,
@@ -361,6 +361,15 @@ M.nvterm = {
     ["<leader>v"] = {
       function()
         require("nvterm.terminal").new "vertical"
+      end,
+      "New vertical term",
+    },
+
+    ["<leader>aa"] = {
+      function()
+        require("nvterm.terminal").new "vertical"
+        vim.cmd("startinsert")
+        vim.api.nvim_feedkeys("auggie\n", "t", false)
       end,
       "New vertical term",
     },

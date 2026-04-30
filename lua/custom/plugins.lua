@@ -54,23 +54,48 @@ local plugins = {
     {
         "ray-x/go.nvim",
         config = function()
-            require("go").setup()
+            require("go").setup({
+                lsp_codelens = false,
+            })
         end,
         event = {"CmdlineEnter"},
         ft = {"go", 'gomod'},
     },
-    {
-        "OXY2DEV/markview.nvim",
-        lazy = false,      -- Recommended
-        -- ft = "markdown" -- If you decide to lazy-load anyway
-        config = function()
-            require("markview").setup()
-        end,
-    },
+    -- {
+    --     "OXY2DEV/markview.nvim",
+    --     lazy = false,      -- Recommended
+    --     -- ft = "markdown" -- If you decide to lazy-load anyway
+    --     config = function()
+    --         require("markview").setup()
+    --     end,
+    -- },
     {
         "unblevable/quick-scope",
         lazy = false,
-    }
+    },
+    {
+        "augmentcode/augment.vim",
+        lazy = false,
+    },
+    { "KulkarniKaustubh/ezstack.nvim", lazy = false },
+    { "joechrisellis/lsp-format-modifications.nvim", ft = "python" },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        event = "BufReadPost",
+        opts = { max_lines = 3 },
+    },
+    {
+        "folke/trouble.nvim",
+        cmd = "Trouble",
+        opts = {},
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {
+            current_line_blame = true,
+            current_line_blame_opts = { delay = 300, virt_text_pos = "eol" },
+        },
+    },
 }
 
 return plugins

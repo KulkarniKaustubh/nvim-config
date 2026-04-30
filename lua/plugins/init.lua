@@ -46,6 +46,7 @@ local default_plugins = {
 
   {
     "nvim-tree/nvim-web-devicons",
+    view = { adaptive_size = true},
     opts = function()
       return { override = require "nvchad.icons.devicons" }
     end,
@@ -73,6 +74,7 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    -- depends_on = { "OXY2DEV/markview.nvim" },
     init = function()
       require("core.utils").lazy_load "nvim-treesitter"
     end,

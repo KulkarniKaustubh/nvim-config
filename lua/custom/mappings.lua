@@ -23,6 +23,12 @@ M.general = {
         -- Show invisible characters
         ["c_"] = { "ct_", "Change till underscore" },
 
+        -- Keep cursor centered when navigating
+        ["n"] = { "nzz", "Next search result (centered)" },
+        ["N"] = { "Nzz", "Prev search result (centered)" },
+        ["<C-d>"] = { "<C-d>zz", "Half page down (centered)" },
+        ["<C-u>"] = { "<C-u>zz", "Half page up (centered)" },
+
         -- Telescope
         ["gr"] = { "<cmd> Telescope lsp_references <CR>", "Telescope LSP references" },
         ["<leader>ll"] = { "<cmd> Telescope diagnostics bufnr=0 <CR>", "Telescope diagnostics for current buffer" },
@@ -63,11 +69,21 @@ M.general = {
             end,
             "LSP rename",
         },
+
+        -- Augment bindings
+        ["<leader>ac"] = { "<cmd> Augment chat <CR>", "Chat with Augment" },
+        ["<leader>at"] = { "<cmd> Augment chat-toggle <CR>", "Toggle chat with Augment" },
+        ["<leader>an"] = { "<cmd> Augment chat-new <CR>", "Start new chat with Augment" },
     },
 
     v = {
         -- Find and replace the selected word
-        ["<leader>r"] = { '"hy:%s/<C-r>h/<C-r>h/gcI<left><left><left><left>' }
+        ["<leader>r"] = { '"hy:%s/<C-r>h/<C-r>h/gcI<left><left><left><left>' },
+        ["<leader>ac"] = { "<cmd> Augment chat <CR>", "Chat with Augment" },
+    },
+
+    i = {
+        ["<C-y>"] = { "<cmd> call augment#Accept() <CR>", "Accept Augment suggestion" },
     }
 }
 

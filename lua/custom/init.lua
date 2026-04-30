@@ -7,6 +7,24 @@ vim.opt.tabstop = 4                    -- insert 4 spaces for a tab
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.clipboard = { "unnamed", "unnamedplus" }
+vim.opt.undofile = true
+vim.opt.confirm = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 400
+vim.opt.signcolumn = "yes"
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank({ timeout = 150 })
+    end,
+})
 
 -- Wrap and linebreak options
 vim.opt.linebreak = true
@@ -30,21 +48,48 @@ vim.opt.listchars = {
 --- Python stuff
 vim.g.loaded_python3_provider = nil
 
-local venv = "~/Envs/lspenv"  -- Path to the environment to use with LSP
-vim.g.python3_host_prog = vim.fn.expand(venv .. "/bin/python")
-vim.env.VIRTUAL_ENV = vim.fn.expand(venv)
-vim.env.PATH = vim.fn.expand(venv) .. "/bin" .. ":" .. vim.env.PATH
+-- local venv = "~/Envs/lspenv"  -- Path to the environment to use with LSP
+-- vim.g.python3_host_prog = vim.fn.expand(venv .. "/bin/python")
+-- vim.env.VIRTUAL_ENV = vim.fn.expand(venv)
+-- vim.env.PATH = vim.fn.expand(venv) .. "/bin" .. ":" .. vim.env.PATH
 
 -- Restore nvim-tree with auto-session
-local autocmd = vim.api.nvim_create_autocmd
-autocmd({ "BufEnter" }, {
-  pattern = "NvimTree*",
-  callback = function()
-    local api = require "nvim-tree.api"
-    local view = require "nvim-tree.view"
+-- local autocmd = vim.api.nvim_create_autocmd
+-- autocmd({ "BufEnter" }, {
+--   pattern = "NvimTree*",
+--   callback = function()
+--     local api = require "nvim-tree.api"
+--     local view = require "nvim-tree.view"
+--
+--     if not view.is_visible() then
+--       api.tree.open()
+--     end
+--   end,
+-- })
 
-    if not view.is_visible() then
-      api.tree.open()
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.py",
+--   callback = function()
+--     local buf = vim.api.nvim_get_current_buf()
+--     local filename = vim.api.nvim_buf_get_name(buf)
+--
+--     -- Save cursor position
+--     local pos = vim.api.nvim_win_get_cursor(0)
+--
+--     -- Run ruff format safely
+--     local output = vim.fn.systemlist(
+--       { "ruff", "format", "--stdin-filename", filename, "-" },
+--       vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+--     )
+--     local status = vim.v.shell_error
+--
+--     if status == 0 then
+--       -- Success: replace buffer with formatted output
+--       vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
+--       vim.api.nvim_win_set_cursor(0, pos)
+--     else
+--       -- Failure: keep buffer unchanged, show error
+--       vim.notify("Ruff format failed:\n" .. table.concat(output, "\n"), vim.log.levels.ERROR)
+--     end
+--   end,
+-- })
